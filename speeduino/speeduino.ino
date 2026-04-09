@@ -264,7 +264,11 @@ BEGIN_LTO_ALWAYS_INLINE(void) loop(void)
       if (configPage9.enable_secondarySerial == 1)  //secondary serial interface enabled
       {
         #ifndef CORE_AVR
-          if (secondarySerial.available() > 0)  { secondserial_Command(); }
+          #if defined(STM32F407xx) 
+			      if (Serial1.available() > 0)  { pSecondarySerial = &Serial1; secondserial_Command(); }
+	          else if (Serial2.available() > 0)  { pSecondarySerial = &Serial2; secondserial_Command(); }
+			    #else
+            if (secondarySerial.available() > 0)  { secondserial_Command(); }
         #else
           if (secondarySerial.available() > SERIAL_BUFFER_THRESHOLD) { secondserial_Command(); } //Special case for AVR units. This prevents potential overflow of the receive buffer
         #endif
