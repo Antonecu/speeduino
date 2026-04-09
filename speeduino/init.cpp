@@ -155,8 +155,12 @@ void initialiseAll(void)
       initCAN();
     #endif
 
-    //Must come after setPinMapping() as secondary serial can be changed on a per board basis
-    if (configPage9.enable_secondarySerial == 1) { secondarySerial.begin(115200); }
+    #if defined(STM32F407xx)
+	    if (configPage9.enable_secondarySerial == 1) { Serial1.begin(115200); Serial2.begin(115200); }
+    #else
+      //Must come after setPinMapping() as secondary serial can be changed on a per board basis
+      if (configPage9.enable_secondarySerial == 1) { secondarySerial.begin(115200); }
+    #endif
 
     //End all coil charges to ensure no stray sparks on startup
     endCoil1Charge();
