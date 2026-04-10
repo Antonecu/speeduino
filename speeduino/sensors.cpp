@@ -89,7 +89,8 @@ static inline uint16_t readAnalogPin(uint8_t pin)
   int tmp = analogRead(pin);
   // max is a macro on some platforms - DO NOT place the call to analogRead as an inline parameter:
   // (you might end up calling it twice)
-  return max(0, tmp);
+  uint32_t corrected = ((uint32_t)tmp * 1023) / 986; //Divisor 5V sensor -> 3.18V pin
+  return (uint16_t)corrected;
 }
 
 
