@@ -1279,7 +1279,7 @@ void wmiControl(void)
           break;
         case WMI_MODE_OPENLOOP:
           //  Mapped open loop - Output PWM follows 2D map value (RPM vs MAP) Cell value contains desired PWM% [range 0-100%]
-          wmiPW = get3DTableValue(&wmiTable, (uint16_t)currentStatus.MAP, currentStatus.RPM);
+          wmiPW = get3DTableValue(&wmiTable, (uint16_t)currentStatus.coolant, currentStatus.RPM);
           break;
         case WMI_MODE_CLOSEDLOOP:
           // Mapped closed loop - Output PWM follows injector duty cycle with 2D correction map applied (RPM vs MAP). Cell value contains correction value% [nom 100%] 
