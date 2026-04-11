@@ -1584,7 +1584,45 @@ void setPinMapping(byte boardID)
 
     #endif
       break;
-
+    
+    case 15:
+    #if defined(STM32F407xx)
+      //Pin mappings for AE black stm32f407vgt
+      pinBat = PA0;
+      pinMAP = PC3;
+      pinO2 = PA4;
+      pinWMIEmpty = PA8;
+      pinVSS = PB6;
+      pinTrigger3 = PB7;
+      pinTrigger = PB8;
+      pinTrigger2 = PB9;
+      pinIAT = PC0;
+      pinCLT = PC1;
+      pinTPS = PC2;
+      pinBaro = PA1;
+      pinVVT_1 = PC6;
+      pinIdle1 = PC7;
+      pinBoost = PC8;
+      pinVVT_2 = PC9;
+      pinIdle2 = PC13;
+      pinWMIEnabled = PD3;
+      pinInjector1 = PD12;
+      pinInjector2 = PD13;
+      pinInjector3 = PD14;
+      pinInjector4 = PD15;
+      pinFuelPump = PE0;
+      pinStepperStep = PE1;
+      pinStepperEnable = PE2;
+      pinWMIIndicator = PE3;
+      pinStepperDir = PE4;
+      pinFan = PE6;
+      pinCoil1 = PE9;
+      pinCoil2 = PE11;
+      pinCoil3 = PE13;
+      pinCoil4 = PE14;
+    #endif
+      break;
+    
     case 14:
     // Pin mappings for the Levin board
     #if defined(STM32F407xx)
